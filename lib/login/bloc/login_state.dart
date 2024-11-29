@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:crud_bloc/login/model/login_resp_model.dart';
 import 'package:equatable/equatable.dart';
 
@@ -8,9 +10,17 @@ class LoginLoadingState extends LoginState {
   List<Object?> get props => [];
 }
 
+
+class LoginInitialState extends LoginState {
+  LoginRespModel? loginRespModel;
+  LoginInitialState({this.loginRespModel});
+
+  @override
+  List<Object?> get props => [LoginRespModel];
+}
 class LoginLoadedState extends LoginState {
   LoginRespModel? loginRespModel;
-  LoginLoadedState({this.loginRespModel});
+  LoginLoadedState({required this.loginRespModel});
 
   @override
   List<Object?> get props => [LoginRespModel];
@@ -18,7 +28,7 @@ class LoginLoadedState extends LoginState {
 
 class LoginErrorState extends LoginState {
   String? errorMsg;
-  LoginErrorState({this.errorMsg});
+  LoginErrorState({ required this.errorMsg});
   @override
   List<Object?> get props => [errorMsg];
 }

@@ -1,35 +1,65 @@
 class LoginRespModel {
-  int? userId;
+  int? status;
+  String? message;
+  Data? data;
+
+  LoginRespModel({this.status, this.message, this.data});
+
+  LoginRespModel.fromJson(Map<String, dynamic> json) {
+    status = json['status'];
+    message = json['message'];
+    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['status'] = this.status;
+    data['message'] = this.message;
+    if (this.data != null) {
+      data['data'] = this.data!.toJson();
+    }
+    return data;
+  }
+}
+
+class Data {
+  String? userId;
   String? userName;
   String? userEmail;
+  String? userPassword;
   String? userAddress;
   int? userPhoneNumber;
   String? userImageUrl;
-  int? userRatingFlag;
   int? userAccountDeleteFlag;
-  String? token;
+  int? userRatingFlag;
+  String? createdAt;
+  String? updatedAt;
 
-  LoginRespModel(
+  Data(
       {this.userId,
       this.userName,
       this.userEmail,
+      this.userPassword,
       this.userAddress,
       this.userPhoneNumber,
       this.userImageUrl,
-      this.userRatingFlag,
       this.userAccountDeleteFlag,
-      this.token});
+      this.userRatingFlag,
+      this.createdAt,
+      this.updatedAt});
 
-  LoginRespModel.fromJson(Map<String, dynamic> json) {
+  Data.fromJson(Map<String, dynamic> json) {
     userId = json['user_id'];
     userName = json['user_name'];
     userEmail = json['user_email'];
+    userPassword = json['user_password'];
     userAddress = json['user_address'];
     userPhoneNumber = json['user_phone_number'];
     userImageUrl = json['user_image_url'];
-    userRatingFlag = json['user_rating_flag'];
     userAccountDeleteFlag = json['user_account_delete_flag'];
-    token = json['token'];
+    userRatingFlag = json['user_rating_flag'];
+    createdAt = json['createdAt'];
+    updatedAt = json['updatedAt'];
   }
 
   Map<String, dynamic> toJson() {
@@ -37,12 +67,14 @@ class LoginRespModel {
     data['user_id'] = this.userId;
     data['user_name'] = this.userName;
     data['user_email'] = this.userEmail;
+    data['user_password'] = this.userPassword;
     data['user_address'] = this.userAddress;
     data['user_phone_number'] = this.userPhoneNumber;
     data['user_image_url'] = this.userImageUrl;
-    data['user_rating_flag'] = this.userRatingFlag;
     data['user_account_delete_flag'] = this.userAccountDeleteFlag;
-    data['token'] = this.token;
+    data['user_rating_flag'] = this.userRatingFlag;
+    data['createdAt'] = this.createdAt;
+    data['updatedAt'] = this.updatedAt;
     return data;
   }
 }

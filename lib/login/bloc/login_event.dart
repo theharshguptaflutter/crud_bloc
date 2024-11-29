@@ -9,7 +9,7 @@ class LoginReqEvent extends LoginEvent{
 
   LoginReqModel? loginReqModel;
 
-  LoginReqEvent({this.loginReqModel});
+  LoginReqEvent({required this.loginReqModel});
   
   @override
   List<Object?> get props => [LoginReqModel];
