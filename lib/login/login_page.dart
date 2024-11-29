@@ -78,11 +78,11 @@ class LoginScreen extends StatelessWidget {
             return Center(child: CircularProgressIndicator());
           } else if (state is LoginLoadedState) {
             return Center(
-              child: Text(state.loginRespModel?.data?.userEmail ?? "",style: TextStyle(color: Colors.black),),
+              child: Text(state.loginRespModel?.data?.userEmail ?? "null",style: TextStyle(color: Colors.black),),
             );
           } else if (state is LoginErrorState) {
             return Center(
-              child: Text(state.errorMsg.toString()),
+              child: Text(state.errorMsg.toString(), style: TextStyle(color: Colors.black),),
             );
           } else {
             return Container();
