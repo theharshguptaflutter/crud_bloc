@@ -32,3 +32,32 @@ class LoginErrorState extends LoginState {
   @override
   List<Object?> get props => [errorMsg];
 }
+
+
+
+//Counter Section
+class CounterInitialState extends LoginState {
+  int? count;
+  CounterInitialState({required this.count});
+
+  
+  @override
+  List<Object?> get props => [];
+}
+
+class CounterIncrementState extends LoginState {
+  int? incCount;
+  CounterIncrementState({required this.incCount});
+
+
+  @override
+  List<Object?> get props => [incCount];
+}
+class CounterDecrementState extends LoginState {
+  int? decCount;
+  CounterDecrementState({required this.decCount});
+
+
+  @override
+  List<Object?> get props => [decCount];
+}

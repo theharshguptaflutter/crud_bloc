@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:crud_bloc/login/bloc/login_bloc.dart';
 import 'package:crud_bloc/login/bloc/login_event.dart';
@@ -7,13 +7,11 @@ import 'package:crud_bloc/login/model/login_req_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
-
 class LoginScreen extends StatelessWidget {
-    TextEditingController email = TextEditingController();
+  TextEditingController email = TextEditingController();
   TextEditingController pwd = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-   LoginScreen({super.key});
+  LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -77,12 +75,23 @@ class LoginScreen extends StatelessWidget {
           } else if (state is LoginLoadingState) {
             return Center(child: CircularProgressIndicator());
           } else if (state is LoginLoadedState) {
-            return Center(
-              child: Text(state.loginRespModel?.data?.userEmail ?? "null",style: TextStyle(color: Colors.black),),
+            return Column(
+              children: [
+                Center(
+                    child: Text(
+                  state.loginRespModel?.data?.userEmail ?? "null",
+                  style: TextStyle(color: Colors.black),
+                )),
+              
+             
+              ],
             );
           } else if (state is LoginErrorState) {
             return Center(
-              child: Text(state.errorMsg.toString(), style: TextStyle(color: Colors.black),),
+              child: Text(
+                state.errorMsg.toString(),
+                style: TextStyle(color: Colors.black),
+              ),
             );
           } else {
             return Container();
