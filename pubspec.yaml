@@ -18,6 +18,8 @@ dependencies:
   flutter_bloc: ^8.1.6
   http:
   equatable:
+  onesignal_flutter: ^5.2.9
+  firebase_core: ^3.10.0
 
 dev_dependencies:
   flutter_test:
